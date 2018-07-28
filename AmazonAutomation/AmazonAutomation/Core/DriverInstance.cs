@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AmazonAutomation
 {
-    public class Driver
+    public class DriverInstance
     {
         private static IWebDriver driver;
         private static Dictionary<string, Type> driverMap = new Dictionary<string, Type>()
@@ -21,7 +21,7 @@ namespace AmazonAutomation
             {"Chrome", typeof(ChromeOptions)}
         };
 
-        private Driver()
+        private DriverInstance()
         {
         }
 

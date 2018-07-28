@@ -16,13 +16,13 @@ namespace AmazonAutomation
             DesiredCapabilities capabilities = new DesiredCapabilities();
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            Driver.Add(Configuration.Get("Browser"), path, capabilities);
+            DriverInstance.Add(Configuration.Get("Browser"), path, capabilities);
         }
 
         [TearDown]
         public void TearDown()
         {
-            Driver.Quit();
+            DriverInstance.Quit();
         }
     }
 }
