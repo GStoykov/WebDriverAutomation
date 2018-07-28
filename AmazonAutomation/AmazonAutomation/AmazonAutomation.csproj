@@ -64,6 +64,7 @@
     <Compile Include="Core\Configuration.cs" />
     <Compile Include="Core\DriverInstance.cs" />
     <Compile Include="Environment.cs" />
+    <Compile Include="PageObjects\Components\Component.cs" />
     <Compile Include="PageObjects\Components\ProductsFilter.cs" />
     <Compile Include="PageObjects\Controls\Control.cs" />
     <Compile Include="PageObjects\Components\HeaderPanel.cs" />

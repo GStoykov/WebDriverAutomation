@@ -7,24 +7,18 @@ using System.Threading.Tasks;
 
 namespace AmazonAutomation.PageObjects
 {
-    public class ProductsFilter
+    public class ProductsFilter : Component
     {
-        private By containerLocator = By.Id("leftNavContainer");
-
         public ProductsFilter()
         {
-        }
-
-        public void ClickOnText(string text)
-        {
-            new Control(containerLocator, By.XPath($".//*[contains(text(),'{text}')]")).Click();
+            base.ContainerLocator = By.Id("leftNavContainer");
         }
 
         public void SetPriceRange(int minPrice, int maxPrice)
         {
+            TextField minField = new TextField(By.Id("low-price"));
+            TextField maxField = new TextField(By.Id("high-price"));
 
-            TextField minField = new TextField(containerLocator, By.XPath(".//*[@id='low-price']"));
-            TextField maxField = new TextField(containerLocator, By.XPath(".//*[@id='high-price']"));
             Control buttonGo = new Control(By.XPath("//input[@class='a-button-input'][@value='Go']"));
 
             minField.Text = minPrice.ToString();

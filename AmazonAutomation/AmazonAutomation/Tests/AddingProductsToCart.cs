@@ -30,9 +30,12 @@ namespace AmazonAutomation.Tests
             searchResultPage.ProductsFilter.ClickOnText("See All 37 Departments");
             searchResultPage.ProductsFilter.ClickOnText("Toys & Games");
             searchResultPage.ProductsFilter.SetPriceRange(10, 150);
+            //Checkbox "14 years & Up" was missing at the time of automating this test
+            searchResultPage.ProductsFilter.ClickOnText("12-15 years");
 
-            //Select age "14 years & Up"
             //Click on the first result
+            searchResultPage.OpenProduct(1);
+
             //Select quantity 4
             //Click on "Add to Cart"
             //Open the cart

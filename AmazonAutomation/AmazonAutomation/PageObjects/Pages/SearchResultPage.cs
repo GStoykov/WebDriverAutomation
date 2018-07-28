@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,11 @@ namespace AmazonAutomation.PageObjects
         public override Page Navigate()
         {
             return this;
+        }
+
+        public void OpenProduct(int productNumber)
+        {
+            new Control(By.Id($"result_{productNumber-1}"), By.XPath(".//a[contains(@class, 'access-detail-page')]")).Click();
         }
     }
 }

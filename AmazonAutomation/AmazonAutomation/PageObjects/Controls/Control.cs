@@ -11,13 +11,7 @@ namespace AmazonAutomation.PageObjects
 {
     public class Control
     {
-        //private Page page;
-        //private By locator;
-
-        //public Page Page => page;
-
         private IWebDriver Driver { get; } = DriverInstance.Current();
-
 
         public By Locator { get; set; }
 
@@ -25,13 +19,17 @@ namespace AmazonAutomation.PageObjects
 
         public Control(By by)
         {
+            ElementPresent(by);
             Element = Driver.FindElement(by);
             Locator = by;
         }
 
         public Control(By parentBy, By by)
         {
+            ElementPresent(parentBy);
             IWebElement parentControl = Driver.FindElement(parentBy);
+
+            ElementPresent(by);
             Element = parentControl.FindElement(by);
             Locator = by;
         }
@@ -45,47 +43,55 @@ namespace AmazonAutomation.PageObjects
             }
         }
 
-        public bool Exists(int timeout)
+        public bool Exists(int timeout, By _by)
         {
             try
             {
-                new WebDriverWait(Driver, TimeSpan.FromMilliseconds(timeout)).Until(ExpectedConditions.ElementExists(this.Locator));
+                if (_by == null)
+                    _by = this.Locator;
+                new WebDriverWait(Driver, TimeSpan.FromMilliseconds(timeout)).Until(ExpectedConditions.ElementExists(_by));
             }
-            catch (WebDriverTimeoutException)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
 
-        public bool Exists()
+        public bool Exists(By _by = null)
         {
-            return Exists(Configuration.Timeout);
+            return Exists(Configuration.Timeout, _by);
         }
 
 
-        public bool Visible(int timeout)
+        public bool Visible(int timeout, By _by)
         {
             try
             {
-                new WebDriverWait(Driver, TimeSpan.FromMilliseconds(timeout)).Until(ExpectedConditions.ElementIsVisible(this.Locator));
+                if (_by == null)
+                    _by = this.Locator;
+                new WebDriverWait(Driver, TimeSpan.FromMilliseconds(timeout)).Until(ExpectedConditions.ElementIsVisible(_by));
             }
-            catch (WebDriverTimeoutException)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
 
-        public bool Visible()
+        public bool Visible(By _by = null)
         {
-            return Visible(Configuration.Timeout);
+            return Visible(Configuration.Timeout, _by);
+        }
+
+        public void ElementPresent(By _by = null)
+        {
+            Assert.IsTrue(this.Exists(_by), "Unable to find element: " + _by);
+            Assert.IsTrue(this.Visible(_by), "Element not visible: " + _by);
         }
 
         public void Click()
         {
-            Assert.IsTrue(this.Exists(), "Unable to find element: " + this.Locator);
-            Assert.IsTrue(this.Visible(), "Element not visible: " + this.Locator);
             this.Element.Click();
         }
 
