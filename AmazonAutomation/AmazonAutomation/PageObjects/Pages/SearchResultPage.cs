@@ -11,10 +11,6 @@ namespace AmazonAutomation.PageObjects
     {
         public ProductsFilter ProductsFilter { get; } = new ProductsFilter();
 
-        public SearchResultPage() : base()
-        {
-        }
-
         public override Page Navigate()
         {
             return this;

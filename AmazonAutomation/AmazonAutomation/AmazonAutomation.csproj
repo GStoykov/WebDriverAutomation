@@ -66,10 +66,14 @@
     <Compile Include="Environment.cs" />
     <Compile Include="PageObjects\Components\Component.cs" />
     <Compile Include="PageObjects\Components\ProductsFilter.cs" />
+    <Compile Include="PageObjects\Components\CartProduct.cs" />
     <Compile Include="PageObjects\Controls\Control.cs" />
     <Compile Include="PageObjects\Components\HeaderPanel.cs" />
+    <Compile Include="PageObjects\Controls\SelectList.cs" />
+    <Compile Include="PageObjects\Pages\CartPage.cs" />
     <Compile Include="PageObjects\Pages\Page.cs" />
     <Compile Include="PageObjects\Controls\TextField.cs" />
+    <Compile Include="PageObjects\Pages\ProductDetailsPage.cs" />
     <Compile Include="PageObjects\Pages\SearchResultPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AddingProductsToCart.cs" />

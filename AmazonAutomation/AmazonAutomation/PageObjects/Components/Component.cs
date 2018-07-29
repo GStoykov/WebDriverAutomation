@@ -9,7 +9,7 @@ namespace AmazonAutomation.PageObjects
 {
     public class Component
     {
-        public By ContainerLocator { get; set; }
+        public virtual By ContainerLocator { get; }
 
         public void ClickOnText(string text)
         {

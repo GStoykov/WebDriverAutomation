@@ -9,9 +9,11 @@ namespace AmazonAutomation.PageObjects
 {
     public class ProductsFilter : Component
     {
+        public override By ContainerLocator { get => By.Id("leftNavContainer"); }
+
         public ProductsFilter()
         {
-            base.ContainerLocator = By.Id("leftNavContainer");
+            //base.ContainerLocator = By.Id("leftNavContainer");
         }
 
         public void SetPriceRange(int minPrice, int maxPrice)

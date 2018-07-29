@@ -1,11 +1,11 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using AmazonAutomation.PageObjects;
 
 namespace AmazonAutomation.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class AddingProductsToCart : Environment
     {
         private Page page;
@@ -27,19 +27,27 @@ namespace AmazonAutomation.Tests
 
             // Filter products
             SearchResultPage searchResultPage = new SearchResultPage();
-            searchResultPage.ProductsFilter.ClickOnText("See All 37 Departments");
+            searchResultPage.ProductsFilter.ClickOnText("See All 36 Departments");
             searchResultPage.ProductsFilter.ClickOnText("Toys & Games");
             searchResultPage.ProductsFilter.SetPriceRange(10, 150);
-            //Checkbox "14 years & Up" was missing at the time of automating this test
-            searchResultPage.ProductsFilter.ClickOnText("12-15 years");
+            searchResultPage.ProductsFilter.ClickOnText("14 Years & Up");
 
             //Click on the first result
             searchResultPage.OpenProduct(1);
 
-            //Select quantity 4
-            //Click on "Add to Cart"
-            //Open the cart
-            //Assert the purchase details
+            //Add product to cart
+            ProductDetailsPage productPage = new ProductDetailsPage();
+            productPage.Quantity.Text = "4";
+            productPage.AddToCartButton.Click();
+
+            //Open cart
+            CartPage cartPage = new CartPage();
+            cartPage.CartButton.Value.Click();
+
+            //Assert product's details
+            Assert.AreEqual(productPage.Title, cartPage.CartProduct.Value.Title.Text);
+            Assert.AreEqual(productPage.Price, cartPage.CartProduct.Value.Price.Text);
+            Assert.AreEqual("4", cartPage.CartProduct.Value.CurrentQuantity.Text);
         }
     }
 }
