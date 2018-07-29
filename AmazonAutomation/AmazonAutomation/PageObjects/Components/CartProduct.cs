@@ -14,6 +14,6 @@ namespace AmazonAutomation.PageObjects
         public Control Title { get { return new Control(ContainerLocator, By.XPath(".//span[contains(@class, 'sc-product-title')]")); } }
         public Control Price { get { return new Control(ContainerLocator, By.XPath(".//span[contains(@class, 'sc-price')]")); } }
         public SelectList Quantity { get { return new SelectList(ContainerLocator, By.XPath(".//select[@name='quantity']")); } }
-        public SelectList CurrentQuantity { get { return new SelectList(ContainerLocator, By.XPath("//span[@data-a-class='quantity']//span[@class='a-dropdown-prompt']")); } }
+        public string CurrentQuantity { get { return new SelectList(ContainerLocator, By.XPath("//span[@data-a-class='quantity']//span[@class='a-dropdown-prompt']")).Text; } }
     }
 }

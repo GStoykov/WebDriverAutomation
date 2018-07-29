@@ -47,7 +47,7 @@ namespace AmazonAutomation.Tests
             //Assert product's details
             Assert.AreEqual(productPage.Title, cartPage.CartProduct.Value.Title.Text);
             Assert.AreEqual(productPage.Price, cartPage.CartProduct.Value.Price.Text);
-            Assert.AreEqual("4", cartPage.CartProduct.Value.CurrentQuantity.Text);
+            Assert.AreEqual("4", cartPage.CartProduct.Value.CurrentQuantity);
         }
     }
 }
