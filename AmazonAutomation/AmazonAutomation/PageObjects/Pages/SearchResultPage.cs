@@ -1,9 +1,5 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AmazonAutomation.PageObjects
 {
@@ -11,10 +7,6 @@ namespace AmazonAutomation.PageObjects
     {
         public ProductsFilter ProductsFilter { get; } = new ProductsFilter();
 
-        public override Page Navigate()
-        {
-            return this;
-        }
 
         public void OpenProduct(int productNumber)
         {

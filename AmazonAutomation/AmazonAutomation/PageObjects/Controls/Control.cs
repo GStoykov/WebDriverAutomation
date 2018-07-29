@@ -1,11 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Interactions;
 
 namespace AmazonAutomation.PageObjects
 {
@@ -90,10 +87,11 @@ namespace AmazonAutomation.PageObjects
             Assert.IsTrue(this.Visible(_by), "Element not visible: " + _by);
         }
 
-        public void Click()
+        public void Click(bool moveToElement = false)
         {
+            Actions action = new Actions(Driver);
+            action.MoveToElement(this.Element).Perform();
             this.Element.Click();
         }
-
     }
 }

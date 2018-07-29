@@ -1,9 +1,6 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using OpenQA.Selenium;
+
 
 namespace AmazonAutomation.PageObjects
 {
@@ -13,7 +10,6 @@ namespace AmazonAutomation.PageObjects
 
         public ProductsFilter()
         {
-            //base.ContainerLocator = By.Id("leftNavContainer");
         }
 
         public void SetPriceRange(int minPrice, int maxPrice)

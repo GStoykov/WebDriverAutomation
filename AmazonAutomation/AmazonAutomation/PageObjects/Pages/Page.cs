@@ -1,9 +1,6 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using OpenQA.Selenium;
+
 
 namespace AmazonAutomation.PageObjects
 {
@@ -21,11 +18,6 @@ namespace AmazonAutomation.PageObjects
 
         public Page()
         {
-        }
-
-        public virtual Page Navigate()
-        {
-            return this;
         }
 
         public bool IsTextPresent(String text)
